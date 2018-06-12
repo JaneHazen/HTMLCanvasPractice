@@ -1,5 +1,10 @@
 # HTMLCanvasPractice
 
+## targetPractice Branch: 
+* Used the radius and an i/j loop to create a grid of circles
+* Created a click event that found the circle based on the X and Y coordinates of the click, the circle's size, and the circles in the array 
+* Changed the color of the circle if clicked
+![Imgur](https://i.imgur.com/qwdVLFf.png)
 
 ## quadraticCurveToPractice Branch: 
 * Used quadraticCurveTo to make an image that looks like a wave
