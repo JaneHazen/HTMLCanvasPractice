@@ -5,49 +5,29 @@ canvas.height = window.innerHeight;
 
 let c  = canvas.getContext('2d');
 
-// rectangle
-// c.fillStyle = "rgba(0,255,0,0.5)";
-// c.fillRect(0,0,100,100);
-// c.fillRect(100,100,100,100);
-// c.fillRect(500,300,100,100);
-// console.log(canvas);
-//
-// //line
-// c.beginPath();
-// c.moveTo(50,300);
-// c.lineTo(300,100);
-// c.lineTo(400, 300);
-// c.strokeStyle = "blue";
-// c.stroke();
-//
-// //arc
-// c.beginPath();
-// c.arc(300, 300, 40,0,Math.PI * 2, false);
-// c.strokeStyle = "red";
-// c.stroke();
-//
-// for (let i = 0; i < 3; i ++) {
-//     let x = Math.random() * window.innerWidth;
-//     let y = Math.random() * window.innerHeight;
-//     c.beginPath();
-//     c.arc(x, y, 30, 0, Math.PI * 2, false);
-//     c.strokeStyle = 'blue';
-//     c.stroke();
-// }
 let mouse = {
     x: undefined,
     y: undefined
 };
 
-const maxRadius = 40;
+const maxRadius = 80;
 const distanceFromMouse = 50;
 
-const colorArray = [
-    '#CCD7C5',
-    '#65655E',
-    '#7D80DA',
-    '#D65780',
-    '#EE9480'
+var person = new Image();
+person.src = "https://static1.squarespace.com/static/55947ac3e4b0fa882882cd65/58ab7d7229687f223f18a4d4/58ab9a90f7e0ab024bc506f5/1487641285336/NS_0036.png";
+
+const redColorArray = [
+    '#420010',
+    '#ED90A7',
+    '#D81E4C',
+    '#931635',
+];
+
+const blueColorArray = [
+    '#87F1FF',
+    '#119DAF',
+    '#0A3238',
+    '#54B2BF',
 ];
 
 window.addEventListener('mousemove',
@@ -70,7 +50,9 @@ function Circle(x, y, dx, dy, radius) {
     this.dy = dy;
     this.radius = radius;
     this.minRadius = radius;
-    this.color = colorArray[Math.floor(Math.random() * colorArray.length)]
+    this.colorArrayIndex = Math.floor(Math.random() * blueColorArray.length);
+    this.color = blueColorArray[this.colorArrayIndex];
+
 
     this.draw = function() {
         c.beginPath();
@@ -90,13 +72,23 @@ function Circle(x, y, dx, dy, radius) {
         this.y += this.dy;
 
         // interactivity
-        if (mouse.x - this.x < distanceFromMouse && mouse.x - this.x > - distanceFromMouse && mouse.y - this.y < distanceFromMouse
-            && mouse.y - this.y > - distanceFromMouse) {
-            if(this.radius < maxRadius ) {
+        if(mouse.x && mouse.y) {
+            c.drawImage(person, mouse.x - person.width/2, mouse.y - person.height/8);
+        }
+        if(mouse.x - this.x < distanceFromMouse  ) {
+            this.x += 4;
+            if(this.radius < maxRadius) {
                 this.radius += 1;
             }
-        } else if(this.radius > this.minRadius){
-            this.radius -= 1;
+            this.color = redColorArray[this.colorArrayIndex]
+
+        } else if (mouse.x - this.x > - distanceFromMouse) {
+            this.x -= 4;
+            if(this.radius < maxRadius) {
+                this.radius += 1;
+            }
+            this.color = redColorArray[this.colorArrayIndex]
+
         }
 
         this.draw();
@@ -107,8 +99,8 @@ function Circle(x, y, dx, dy, radius) {
 let circleArray = [];
 function init() {
     circleArray = [];
-    for (let i = 0; i < 900; i++) {
-        const radius = Math.random() * 3 + 1;
+    for (let i = 0; i < 500; i++) {
+        const radius = Math.random() * 10 + 1;
         const x = Math.random() * (innerWidth - radius * 2) + radius;
         const y = Math.random() * (innerHeight - radius * 2) + radius;
         const dx = (Math.random() - 0.5) * 3;
