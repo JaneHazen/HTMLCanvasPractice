@@ -7,13 +7,6 @@ let c  = canvas.getContext('2d');
 
 let clicked = false;
 
-const colorArray = [
-    '#FF6978',
-    '#93E1D8',
-    '#FFA69E',
-    '#72195A',
-    '#508CA4'
-];
 
 window.addEventListener('click',
     function(event) {
@@ -24,9 +17,7 @@ window.addEventListener('click',
                 && event.clientY - circle.radius <= circle.y)
             {circle.clicked = true};
         });
-
-        event.target.clicked = true;
-    });
+});
 
 window.addEventListener('resize', function(){
     canvas.width = window.innerWidth;
@@ -40,7 +31,6 @@ function Circle(x, y, radius) {
     this.y = y;
     this.radius = radius;
     this.clicked = false;
-    this.colorArrayIndex = Math.floor(Math.random() * colorArray.length);
     this.color = 'gray';
 
 
@@ -55,7 +45,7 @@ function Circle(x, y, radius) {
 
         // interactivity
         if(this.clicked) {
-            this.color = colorArray[this.colorArrayIndex];
+            this.color = 'yellow';
         }
 
         this.draw();
