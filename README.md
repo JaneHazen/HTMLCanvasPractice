@@ -1,13 +1,6 @@
 # HTMLCanvasPractice
 
 
-## partingTheRedSea Branch: 
-* Used drawImage function to make a png of a person float around the screen along with your mouse
-* Ensured the mouse stays on the person's head as it moves
-* Made the array of circles move away from the mouse along the X access as they came into contact with a set radius
-
-![Imgur](https://i.imgur.com/vrkrxPQ.png)
-
 ## quadraticCurveToPractice Branch: 
 * Used quadraticCurveTo to make an image that looks like a wave
 * Translated that to a DataURL, 
@@ -23,4 +16,15 @@
 * Set up an onclick event to increase the height of the rectangles, simulating a curtain fall
 
 ![Imgur](https://i.imgur.com/leKdiU0.png)
+
+
+## partingTheRedSea Branch: 
+* Used drawImage function to make a png of a person float around the screen along with your mouse
+* Ensured the mouse stays on the person's head as it moves
+* Made the array of circles move away from the mouse along the X access as they came into contact with a set radius
+
+![Imgur](https://i.imgur.com/vrkrxPQ.png)
+
+## master Branch Follows This Tutorial: 
+https://www.youtube.com/watch?v=EO6OkltgudE
 
